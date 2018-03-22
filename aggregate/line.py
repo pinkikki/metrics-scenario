@@ -10,6 +10,6 @@ def aggregate(target):
     log_data = sc.textFile('data/crino-r')
     lines = log_data.filter(lambda s: target in s)
     with open('output/line.metrics', 'w') as fw:
-        fw.write(f'●{target}：{num}\n')
+        fw.write(f'●{target}：{lines.count()}\n')
         fw.writelines('\n'.join(lines.collect()))
 
